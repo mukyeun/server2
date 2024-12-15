@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// 임시 데이터 저장소 (실제 구현시에는 데이터베이스 사용)
+// 임시 데이터 저장소 (메모리에 저장)
 let userInfoData = [];
 
 // POST: 사용자 정보 저장
