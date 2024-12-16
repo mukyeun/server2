@@ -1,12 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 
 const app = express();
-
-// 기본 로깅만 사용
-app.use(morgan('dev'));
 
 app.use(cors({
   origin: [
