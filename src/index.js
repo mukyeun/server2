@@ -13,12 +13,6 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
-// 간단한 요청 로깅
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
 // 임시 데이터 저장소
 let userInfoData = [];
 
