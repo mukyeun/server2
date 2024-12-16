@@ -5,7 +5,13 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // 미들웨어 설정
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://client-5bo5yen21-mukyeuns-projects.vercel.app",
+    "http://localhost:3000"  // 로컬 개발용
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // 임시 데이터 저장소 (메모리에 저장)
