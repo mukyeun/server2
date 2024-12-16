@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: [
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 
 // Health check endpoint
 app.get('/', (req, res) => {
-  res.send('Server is running');
+  res.json({ status: 'ok', message: 'Server is running' });
 });
 
 // 임시 데이터 저장소
@@ -42,9 +43,8 @@ app.get('/api/userinfo', (req, res) => {
   });
 });
 
-// 서버 시작
-const server = app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server is running on port ${process.env.PORT || 8080}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 // Graceful shutdown
