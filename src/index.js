@@ -16,7 +16,11 @@ app.use(bodyParser.json());
 
 // Health check endpoint
 app.get('/', (req, res) => {
-  res.json({ status: 'ok', message: 'Server is running' });
+  res.status(200).send('OK');
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
 
 // 임시 데이터 저장소
@@ -43,15 +47,6 @@ app.get('/api/userinfo', (req, res) => {
   });
 });
 
-const server = app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Closing server...');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
 });
